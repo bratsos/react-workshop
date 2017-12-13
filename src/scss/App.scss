@@ -1,0 +1,115 @@
+@import './libs/font-awesome/scss/font-awesome.scss';
+@import './colors.scss';
+@import './common.scss';
+@import './header.scss';
+@import './tickets.scss';
+.App {
+    // font-family: 'Roboto', sans-serif;
+    height: 100%;
+}
+
+.login-wrapper {
+    background: linear-gradient(135deg, #15CFE8, #031A34);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box>img {
+    width: 100px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.5);
+    &:hover {
+        transform: rotateY(180deg);
+    }
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all .5s;
+}
+
+.login-box h1 {
+    font-weight: 300;
+    color: #fff;
+    text-shadow: 0px 1px 1px black;
+}
+
+.login-btn img {
+    height: 40px;
+}
+
+.login-box .login-btn {
+    font-size: 0px;
+    background: transparent;
+    padding: 15px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    margin: 0 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: background-color .3s;
+    outline: none;
+}
+
+.logging .login-box {
+    transform: translateX(-25%);
+    opacity: 0;
+}
+
+.error-msg {
+    position: fixed;
+    top: 10px;
+    width: 200px;
+    background: #e53935;
+    color: #fafafa;
+    text-align: center;
+    padding: 10px 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, .5);
+}
+
+.drop-down {
+    background: #f7f7f7;
+    position: absolute;
+    top: 45px;
+    right: 0px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .25);
+}
+
+.notification-wrapper {
+    height: 300px;
+    width: 200px;
+}
+
+.notifications.left {
+    position: relative;
+}
+
+.drop-down:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    border-bottom: 12px solid #f7f7f7;
+    position: absolute;
+    top: -12px;
+    right: 10px;
+}
+
+.user-menu {
+    color: #222;
+    padding: 0 20px;
+    &:hover p {
+        border-bottom: 1px solid #222;
+    }
+}
+
+.App.highlight-notification .ticket > div:nth-last-child(2) {
+    background: #fff7dd;
+}
