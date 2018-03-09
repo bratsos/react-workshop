@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 
 import agorf from './assets/images/agorf.png';
 import ReactLogo from './assets/images/react.svg';
 import BooLogo from './assets/images/vue-9.svg';
 
 class Login extends Component {
+
+
 
   render() {
     // Objectives:
@@ -21,11 +22,15 @@ class Login extends Component {
           <img src={agorf} />
           <h1>Which one is my true love?</h1>
           <div className="btns-wrapper">
-            <button className="login-btn">
+            <button
+              className="login-btn"
+              onClick={() => this.props.lalakoko('react')}
+            >
               <img src={ReactLogo} />
-              React
             </button>
-            <button className="login-btn">
+            <button className="login-btn"
+                    onClick={() => this.props.lalakoko('vue')}
+            >
               <img src={BooLogo} />
               Vue
             </button>

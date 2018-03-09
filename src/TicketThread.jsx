@@ -34,14 +34,14 @@ class TicketThread extends React.Component {
       <div className="tickets-container card">
         <div className="ticket">
           {/* render the TicketItems (questions and answers) that have been already added */}
-          <div className="answer-button">
-            <a className="form-expand-button">
+          <div className="answer-button"> {/* put a click listener here to expand-collapse form */}
+            <a className="form-expand-button"> {/* needs class 'clicked' to change appearance */}
               <span className="expand-collapse">+</span>
               Απάντηση
             </a>
           </div>
         </div>
-        <div className="answer-wrapper clearfix">
+        <div className="answer-wrapper clearfix">{/* needs class 'expanded' to show */}
           <textarea className="right"
                     value=""
                     placeholder="Συμπληρώστε την απάντησή σας"
@@ -50,6 +50,7 @@ class TicketThread extends React.Component {
                   id="add-answer-btn"
                   className="right"
           >
+          {/* When clicked, answer should be submitted.. */}
             Αποστολή
           </button>
         </div>
