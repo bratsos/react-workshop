@@ -1,47 +1,52 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import Header from './Header';
 import TicketThread from './TicketThread';
 
 class Dashboard extends Component {
-    state = {
-        notifications: false,
-        highlightNotification: false
-    }
+  static propTypes = {
+    logoutUser: PropTypes.func.isRequired
+  };
 
-    newNotification = () => {
-        this.setState((prevState) => ({
-            notifications: true
-        }))
-    }
+  state = {
+    notifications: false,
+    highlightNotification: false
+  };
 
-    readNotifications = () => {
-        this.setState((prevState) => ({
-            notifications: false,
-            highlightNotification: true
-        }))
+  newNotification = () => {
+    this.setState((prevState) => ({
+      notifications: true
+    }));
+  }
 
-        setTimeout(() => {
-            this.setState((prevState) => ({
-                highlightNotification: false
-            }))
-        }, 1250)
-    }
+  readNotifications = () => {
+    this.setState((prevState) => ({
+      notifications: false,
+      highlightNotification: true
+    }));
 
-    render() {
-        return (
-            <div className={`App ${this.state.highlightNotification ? 'highlight-notification' : ''}`}>
-                <Header
-                    logoutUser={this.props.logoutUser}
-                    hasNotifications={this.state.notifications}
-                    readNotifications={this.readNotifications}
-                />
-                <TicketThread
-                    newNotification={this.newNotification}
-                />
-            </div>
-        )
-    }
+    setTimeout(() => {
+      this.setState((prevState) => ({
+          highlightNotification: false
+      }))
+    }, 1250);
+}
+
+  render() {
+    return (
+      <div className={`App ${this.state.highlightNotification ? 'highlight-notification' : ''}`}>
+        <Header
+          logoutUser={this.props.logoutUser}
+          hasNotifications={this.state.notifications}
+          readNotifications={this.readNotifications}
+        />
+        <TicketThread
+          newNotification={this.newNotification}
+        />
+      </div>
+    );
+  }
 }
 
 export default Dashboard;

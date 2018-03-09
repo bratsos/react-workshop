@@ -1,6 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import TicketItem from './TicketItem';
-import {getDateNow} from './modules/common';
+import { getDateNow } from './modules/common';
 
 class TicketThread extends React.Component {
   static defaultProps = {
@@ -9,7 +11,11 @@ class TicketThread extends React.Component {
       date: '19/11/2017 12:54',
       text: 'Παρακαλώ ενημερώστε με για την πορεία του ticket. Ευχαριστώ.'
     }]
-  }
+  };
+
+  static propTypes = {
+    arrayOfTickets: PropTypes.arrayOf(PropTypes.object)
+  };
 
   constructor(props) {
     super(props);
@@ -33,7 +39,7 @@ class TicketThread extends React.Component {
   addAnswer = (e) => {
     e.preventDefault();
 
-    this.props.newNotification()
+    this.props.newNotification();
 
     const answerTyped = this.state.answerTyped.trim();
     const ticketData = {
@@ -44,7 +50,7 @@ class TicketThread extends React.Component {
 
     this.setState((prevState) => {
       return {
-        arrayOfTickets : [...prevState.arrayOfTickets,ticketData],
+        arrayOfTickets : [...prevState.arrayOfTickets, ticketData],
         answerTyped: '',
         isDisabled: true
       }
@@ -52,11 +58,9 @@ class TicketThread extends React.Component {
   }
 
   expandForm = (e) => {
-    this.setState((prevState) => {
-      return {
-        expanded: !prevState.expanded
-      }
-    });
+    this.setState((prevState) => (
+      { expanded: !prevState.expanded }
+    ));
   }
 
   onAnswerChanged = (e) => {
@@ -73,22 +77,22 @@ class TicketThread extends React.Component {
   }
 
   render() {
-    const { arrayOfTickets, expanded, isDisabled, answerTyped } = this.state
+    const { arrayOfTickets, expanded, isDisabled, answerTyped } = this.state;
     const ticketComponents = arrayOfTickets.map((ticket, index) => {
       return <TicketItem
                 key={index}
                 type={ticket.type}
                 text={ticket.text}
                 date={ticket.date}
-                isLast={index === arrayOfTickets.length - 1 }
+                isLast={index === arrayOfTickets.length - 1}
               />
-    })
+    });
 
     return (
       <div className="tickets-container card">
         <div className="ticket">
           {ticketComponents}
-          <div className="answer-button" onClick={(e) => this.expandForm(e)}>
+          <div className="answer-button" onClick={this.expandForm}>
             <a className={`form-expand-button ${expanded ? 'clicked' : ''}`}>
               <span className="expand-collapse">{expanded ? '-' : '+'}</span>
               Απάντηση
