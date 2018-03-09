@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import agorf from './assets/images/agorf.png';
-import ReactLogo from './assets/images/react.svg';
-import BooLogo from './assets/images/vue-9.svg';
+import BooLogo from './assets/images/react.svg';
+import VueLogo from './assets/images/vue-9.svg';
 
 class Login extends Component {
   static propTypes = {
@@ -16,7 +16,7 @@ class Login extends Component {
   };
 
   shouldLogin = (selected) => {
-    if (selected === 'react') {
+    if (selected === 'vue') {
       this.setState((prevState) => ({
         logging: true
       }));
@@ -54,11 +54,11 @@ class Login extends Component {
           <h1>Which one is my true love?</h1>
           <div className="btns-wrapper">
             <button className="login-btn" onClick={() => this.shouldLogin('react')}>
-              <img alt="react logo" src={ReactLogo} />
+              <img alt="react logo" src={BooLogo} />
               React
             </button>
             <button className="login-btn" onClick={() => this.shouldLogin('vue')}>
-              <img alt="boo logo" src={BooLogo} />
+              <img alt="boo logo" src={VueLogo} />
               Vue
             </button>
           </div>
